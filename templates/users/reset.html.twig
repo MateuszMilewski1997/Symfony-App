@@ -1,0 +1,36 @@
+{% extends 'mainpage/main.html.twig' %}
+{% block title %}
+    {% trans %}Resetowanie hasła{% endtrans %}
+{% endblock %}
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <div id="LoginForm">
+        <div class="container">
+            <div class="login-form">
+                <div class="main-div">
+                    <div style="float: right;"><a href="{{ path('app_login') }}">
+                            <i style="font-size: 25px; color: black;" class="fas fa-chevron-left"></i>
+                        </a></div>
+                    {% if app.request.locale == 'pl_PL' %}
+                        <div style="float: left;"><a id="en" href="#" onclick="changeLanguage(this.id)"><i>🇺🇸</i></a>
+                        </div>
+                    {% elseif app.request.locale == 'en' %}
+                        <div style="float: left;"><a id="pl_PL" href="#"
+                                                     onclick="changeLanguage(this.id)"><i>🇵🇱</i></a></div>
+                    {% endif %}
+                    <form style="clear: both;" method="post">
+                        <h1 class="h3 mt-5 mb-5 font-weight-normal">{% trans %}Zresetuj swoje hasło{% endtrans %}</h1>
+                        {% if message is defined %}
+                            <div class="alert alert-danger">  {{ message }}</div>
+                        {% endif %}
+                        <div class="row"><input type="email" class="form-control mt-4" placeholder="Email"
+                                                name="Email"></div>
+                        <div class="row"><input class="btn btn-lg btn-warning mt-4 w-100" type="submit"
+                                                value="{% trans %}Resetuj{% endtrans %}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

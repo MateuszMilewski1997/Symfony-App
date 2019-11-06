@@ -1,0 +1,23 @@
+{% extends 'mainpage/main.html.twig' %}
+{% block content %}
+    <div class="container-fluid container_new_post mt-5">
+        <h1 class="mb-5">{% trans %}Stwórz nowy post{% endtrans %}</h1>
+        {{ form_start(form) }}
+        <div class="mt-3"><span style="cursor: default; font-weight: bold;">{% trans %}Tytuł{% endtrans %}</span></div>
+        {{ form_widget(form.Title) }}
+        {{ form_errors(form.Title) }}
+        <div class="mt-3"><span style="cursor: default; font-weight: bold;">{% trans %}Treść{% endtrans %}</span></div>
+        {{ form_widget(form.Content) }}
+        {{ form_errors(form.Content) }}
+        <div class="mt-3"><span style="cursor: default; font-weight: bold;">{% trans %}Wybierz zdjęcie{% endtrans %}:</span></div>
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+        <div>
+            <button class="btn btn-dark mt-5">{% trans %}Dodaj post{% endtrans %}</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <script>
+        document.querySelector("#post_form_name").className += "btn btn-secondary";
+    </script>
+{% endblock %}
